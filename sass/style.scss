@@ -1,64 +1,125 @@
 @import "base/reset";
 @import "base/typography";
 @import "base/variables";
+@import "base/mixins";
+
+// global
+.bg-image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+
+    @include max-768px {
+        font-size: 2rem;
+    }
+
+    @include max-600px {
+        font-size: 1.5rem;
+    }
+}
+
+.container {
+    padding: 6% 8%;
+
+    @include max-1024px {
+        padding: 5%;
+    }
+}
 
 // hero
 
 .hero {
     height: 80vh;
     background-image: url(../img/hero.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
 
     .hero-text {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 20% 10%;
         width: 50%;
         line-height: 1;
-        background-color: $red-transparent;
         height: 100%;
+        background-color: $red-transparent;
         color: #fff;
+
+        @include max-600px {
+            width: 100%;
+        }
+
 
         .hero-title {
             font-size: 5rem;
             font-weight: 400;
             text-transform: capitalize;
             margin-bottom: 20px;
-        }
 
-        .paragraph {
-            line-height: 1.7;
+            @include max-1024px {
+                font-size: 4rem;
+            }
+
+            @include max-768px {
+                font-size: 3.25rem;
+            }
+
+            @include max-600px {
+                font-size: 2.5rem;
+            }
         }
     }
 
+    .paragraph {
+        line-height: 1.7;
+
+        @include max-600px {
+            width: 70%;
+        }
+    }
 }
+
+
 
 // section 1
 
 .section-1 {
     display: flex;
 
+    @include max-600px {
+        display: block;
+    }
+
     .column {
         flex-basis: 50%;
+
     }
 
     .column-1 {
         background-color: $light-grey;
-        padding: 6% 8%;
+
 
         .title {
-            font-size: 3rem;
-            font-weight: 400;
             width: 60%;
-            line-height: 1;
-            margin-bottom: 20px;
+
+
+            @include max-600px {
+                width: 80%;
+            }
         }
 
         .paragraph {
             margin-bottom: 60px;
+
+            @include max-600px {
+                margin-bottom: 40px;
+            }
         }
 
         .btn {
@@ -77,9 +138,10 @@
 
     .column-2 {
         background-image: linear-gradient($red-transparent), url(../img/section1.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+
+        @include max-600px {
+            display: none;
+        }
     }
 }
 
@@ -88,28 +150,58 @@
 .section-2 {
     display: flex;
 
+    @include max-600px {
+        flex-wrap: wrap;
+    }
+
     .img-div {
         height: 500px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
         flex-basis: 25%;
+
+        @include max-768px {
+            height: 360px;
+        }
+
+        @include max-600px {
+            flex-basis: 50%;
+        }
+
+        @include max-375px {
+            flex-basis: 100%;
+            height: 300px;
+        }
     }
 
     .img-div-1 {
         background-image: url(../img/img1Desktop.jpg);
+
+        @include max-768px {
+            background-image: url(../img/img1Mobile.jpg);
+        }
     }
 
     .img-div-2 {
         background-image: url(../img/img2Desktop.jpg);
+
+        @include max-768px {
+            background-image: url(../img/img2Mobile.jpg);
+        }
     }
 
     .img-div-3 {
         background-image: url(../img/img3Desktop.jpg);
+
+        @include max-768px {
+            background-image: url(../img/img3Mobile.jpg);
+        }
     }
 
     .img-div-4 {
         background-image: url(../img/img4Desktop.jpg);
+
+        @include max-768px {
+            background-image: url(../img/img4Mobile.jpg);
+        }
     }
 }
 
@@ -118,40 +210,57 @@
 
     display: flex;
 
+    @include max-600px {
+        flex-wrap: wrap;
+    }
+
+
     .column-text {
 
         color: #fff;
 
-        .title {
-            line-height: 1;
-            margin-bottom: 20px;
-            font-weight: 400;
-            font-size: 2rem;
-            text-transform: capitalize;
-        }
     }
 
     .column-1 {
         flex-basis: 25%;
         text-align: left;
         background-color: $red;
-        padding: 6% 4% 6% 8%;
+
+        @include max-600px {
+            flex-basis: 50%;
+        }
+
+        @include max-375px {
+            flex-basis: 100%;
+        }
 
     }
 
     .column-2 {
         flex-basis: 50%;
         background-image: url(../img/section3Desktop.jpg);
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
+
+        @include max-600px {
+            display: none;
+        }
+
+
     }
 
     .column-3 {
         flex-basis: 25%;
         text-align: right;
         background-color: $blue;
-        padding: 6% 8% 6% 4%;
+
+
+
+        @include max-600px {
+            flex-basis: 50%;
+        }
+
+        @include max-375px {
+            flex-basis: 100%;
+        }
 
         .title {
             margin-right: 0;
@@ -165,18 +274,30 @@
     position: relative;
     display: flex;
 
+    @include max-600px {
+        flex-wrap: wrap;
+    }
+
     .column-1 {
         flex-basis: 70%;
         height: 600px;
         background-image: url(../img/section4Desktop.jpg);
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
+
+        @include max-600px {
+            flex-basis: 100%;
+            background-image: url(../img/section4Mobile.jpg);
+            height: 450px;
+            flex-basis: 100%;
+        }
     }
 
     .column-2 {
         flex-basis: 30%;
         background-color: $black;
+
+        @include max-600px {
+            display: none;
+        }
     }
 
     .column-floating {
@@ -190,12 +311,20 @@
         color: #fff;
         text-align: right;
 
-        .title {
-            line-height: 1;
-            margin-bottom: 20px;
-            font-weight: 400;
-            font-size: 2rem;
-            text-transform: capitalize;
+        @include max-1024px {
+            width: 40%;
+        }
+
+        @include max-600px {
+            width: 50%;
+        }
+
+        @include max-375px {
+            width: 80%;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            padding: 24px 16px;
         }
 
         .paragraph {
@@ -222,21 +351,27 @@
 .section-6 {
     display: flex;
 
+    @include max-600px {
+        flex-wrap: wrap;
+    }
+
     .column {
-        padding: 6% 8%;
         color: #fff;
 
+
+
         .title {
-            font-size: 3rem;
-            font-weight: 400;
             width: 60%;
-            line-height: 1;
-            margin-bottom: 20px;
-            text-transform: capitalize;
+
+
         }
 
         .paragraph {
             margin-bottom: 60px;
+
+            @include max-600px {
+                margin-bottom: 40px;
+            }
         }
 
         .btn {
@@ -257,12 +392,20 @@
         background-color: $green;
         text-align: left;
         flex-basis: 50%;
+
+        @include max-600px {
+            flex-basis: 100%;
+        }
     }
 
     .column-2 {
         background-color: $blue;
         text-align: right;
         flex-basis: 50%;
+
+        @include max-600px {
+            flex-basis: 100%;
+        }
 
         .title {
             margin-left: auto;
@@ -276,21 +419,23 @@
 .footer {
     background-color: $black;
     color: $light-grey;
-    padding: 6% 10%;
     display: flex;
 
+    @include max-600px {
+        flex-wrap: wrap;
+    }
+
     .title {
-        font-size: 3rem;
-        font-weight: 400;
         width: 60%;
-        line-height: 1;
-        margin-bottom: 20px;
-        text-transform: capitalize;
     }
 
     .column-1 {
         flex-basis: 50%;
         padding-right: 8%;
+
+        @include max-600px {
+            flex-basis: 100%;
+        }
 
         form {
             color: $light-grey;
@@ -310,7 +455,7 @@
 
                 textarea {
                     resize: none;
-                    height: 120px;
+                    height: 160px;
                 }
             }
 
@@ -329,15 +474,18 @@
                 color: $light-grey;
             }
 
-
-
-
         }
     }
 
     .column-2 {
         flex-basis: 50%;
         padding-left: 8%;
+
+        @include max-600px {
+            flex-basis: 100%;
+            padding-left: 0;
+            margin-top: 40px;
+        }
 
         ul {
             list-style: none;
@@ -356,16 +504,11 @@
 
         li:last-child a {
             margin-right: 12px;
-        }
 
-        .info {
-            h3 {
-                font-size: 3rem;
-                font-weight: 400;
-                line-height: 1;
-                margin-bottom: 20px;
-                text-transform: capitalize;
+            &:hover {
+                color: $red;
             }
         }
+
     }
 }
